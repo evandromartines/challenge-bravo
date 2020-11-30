@@ -1,0 +1,15 @@
+version: '3.5'
+services:
+    challenge-bravo:
+        build: 
+          dockerfile: ./docker/Dockerfile
+          context: .
+        image: challenge-bravo
+        container_name : challenge-bravo
+        ports:  
+             - "3900:3000"
+        volumes:
+            - ./:/home/challenge-bravo/library
+            - ./data:/home/challenge-bravo/data
+            - /home/challenge-bravo/library/node_modules 
+        command: bash -c "npm test;npm start"
